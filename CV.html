@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IQRA - CV</title>
+<style>
+  /* ===== BASE STYLES ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: #e0e0e0; 
+    color: #222;
+    font-size: 10.5pt;
+    line-height: 1.4;
+    -webkit-print-color-adjust: exact; 
+  }
+
+  /* ===== PAGE SETUP (STRICT A4) ===== */
+  .page {
+    background: #fff;
+    width: 210mm; 
+    height: 297mm; 
+    margin: 20px auto;
+    padding: 15mm 15mm; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    overflow: hidden; 
+  }
+
+  /* ===== HEADER & TYPOGRAPHY ===== */
+  header {
+    margin-bottom: 16px;
+  }
+  
+  h1 {
+    font-size: 26pt;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+    color: #000;
+  }
+  
+  .subtitle {
+    text-align: center;
+    font-size: 12pt;
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  /* 3-Column Contact Grid */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 10px;
+    font-size: 9.5pt;
+    color: #333;
+  }
+
+  .contact-col {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Make links look like the screenshot (Blue) */
+  .contact-item a {
+    color: #2b5797;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  /* SVG Icon Styling */
+  .icon {
+    width: 13px;
+    height: 13px;
+    fill: #000;
+    flex-shrink: 0;
+  }
+
+  /* ===== SECTION HEADERS ===== */
+  h2 {
+    font-size: 11.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1.5px solid #333;
+    padding-bottom: 2px;
+    margin-top: 14px;
+    margin-bottom: 8px;
+    color: #111;
+  }
+
+  /* ===== CONTENT BLOCKS ===== */
+  .item { margin-bottom: 10px; }
+  
+  .item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-weight: bold;
+    font-size: 11pt;
+    margin-bottom: 2px;
+  }
+  
+  .item-sub {
+    display: flex;
+    justify-content: space-between;
+    font-style: italic;
+    color: #555;
+    font-size: 10pt;
+    margin-bottom: 4px;
+  }
+  
+  /* ===== LISTS ===== */
+  ul { padding-left: 18px; margin-bottom: 4px; }
+  li { margin-bottom: 3px; }
+  .tech-stack { font-weight: bold; font-size: 9.5pt; color: #444; }
+
+  /* ===== SKILLS SECTION ===== */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    gap: 6px;
+    font-size: 10pt;
+  }
+  .skills-cat { font-weight: bold; }
+
+  /* ===== LINKS IN PROJECTS ===== */
+  .project-links { font-size: 9pt; margin-top: 2px; }
+  .project-links a { color: #2b5797; text-decoration: none; font-weight: 500; }
+
+  /* =========================================
+     PRINT SETTINGS (FORCES A4 PDF)
+     ========================================= */
+  @page {
+    size: A4; 
+    margin: 0; 
+  }
+
+  @media print {
+    body { background: #fff; }
+    .page {
+      margin: 0;
+      padding: 15mm; 
+      box-shadow: none;
+      width: 100%;
+      height: 100%;
+    }
+    .print-instructions { display: none; }
+  }
+
+  /* ===== ON-SCREEN INSTRUCTIONS ===== */
+  .print-instructions {
+    max-width: 210mm;
+    margin: 0 auto 10px auto;
+    padding: 12px;
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    border-radius: 6px;
+    font-size: 10pt;
+    color: #664d03;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="print-instructions">
+  <strong>To save as an exact A4 PDF:</strong> Press <code>Ctrl + P</code>. Set Paper Size to <strong>A4</strong>, Margins to <strong>None</strong>.
+</div>
+
+<div class="page">
+
+  <!-- ==========================================
+       1. HEADER WITH ICONS (LIKE THE SCREENSHOT)
+       ========================================== -->
+  <header>
+    <!-- EDIT: Your full name -->
+    <h1>IQRA</h1> 
+    
+    <!-- EDIT: Your target role -->
+    <div class="subtitle">Computer Science Student</div>
+    
+    <div class="contact-grid">
+      
+      <!-- LEFT COLUMN: Phone & LinkedIn -->
+      <div class="contact-col">
+        <!-- Phone -->
+        <div class="contact-item">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M17 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-5 18a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm5-3H7V5h10v12z"/></svg>
+          <!-- EDIT: Your phone number -->
+          <span>+92 343 536 9520</span>
+        </div>
+        <!-- LinkedIn -->
+        <div class="contact-item">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          <!-- EDIT: Your LinkedIn Link -->
+          <a href="https://www.linkedin.com/in/iqra-iftikhar-733523411/" target="_blank" rel="noopener">in/iqra-iftikhar-733523411</a>
+        </div>
+      </div>
+
+      <!-- MIDDLE COLUMN: Email & GitHub -->
+      <div class="contact-col">
+        <!-- Email -->
+        <div class="contact-item">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/></svg>
+          <!-- EDIT: Your Email -->
+          <a href="mailto:iqraiftikhar328@gmail.com">iqraiftikhar328@gmail.com</a>
+        </div>
+        <!-- GitHub -->
+        <div class="contact-item">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          <!-- EDIT: Your GitHub Link -->
+          <a href="https://github.com/iqraiftikhar-328" target="_blank" rel="noopener">github.com/iqraiftikhar-328</a>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Location & Portfolio -->
+      <div class="contact-col">
+        <!-- Location -->
+        <div class="contact-item">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+          <!-- EDIT: Your Location -->
+          <span>Islamabad, Pakistan</span>
+        </div>
+        <!-- Portfolio -->
+        <div class="contact-item">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          <!-- EDIT: Your Portfolio Link (if you haven't deployed it yet, use your GitHub) -->
+          <a href="https://yourportfolio.com">Portfolio</a>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==========================================
+       2. EDUCATION
+       ========================================== -->
+  <section>
+    <h2>Education</h2>
+    <div class="item">
+      <div class="item-header">
+        <span>BS Computer Science</span>
+        <span>Expected 2030</span> 
+      </div>
+      <div class="item-sub">
+        <span>Bahria University</span>
+        <span>Islamabad, Pakistan</span>
+      </div>
+      <ul>
+        <li><strong>Relevant Coursework:</strong> Programming Fundamentals, Discrete Mathematics, Calculus, Introduction to ICT,Object-Oriented Programming.</li>
+        <li><strong>Current Standing:</strong> 2nd Semester</li>
+      </ul>
+    </div>
+    <div class="item">
+      <div class="item-header">
+        <span>FSC Pre Medical</span>
+        <span>2023-2025</span> 
+      </div>
+      <div class="item-sub">
+        <span>Superior Collage, Chakshahzad</span>
+        <span>Islamabad, Pakistan</span>
+      </div>
+    </div>
+    <div class="item">
+      <div class="item-header">
+        <span>Matriculation, Science</span>
+        <span>2021-2023</span> 
+      </div>
+      <div class="item-sub">
+        <span>Islamabad Model College, NIH</span>
+        <span>Islamabad, Pakistan</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       3. TECHNICAL SKILLS
+       ========================================== -->
+  <section>
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skills-cat">Languages:</div>
+      <div>HTML, CSS, C++</div>
+         <div class="skills-cat">Concepts:</div>
+      <div>Object-Oriented Programming (OOP), Web Development, Retrieval-Augmented Generation (RAG)</div>
+      <div class="skills-cat">Tools:</div>
+      <div>GitHub, VS Code, Microsoft Visual Studio, Microsoft Office</div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       4. PROJECTS
+       ========================================== -->
+  <section>
+    <h2>Academic & Personal Projects</h2>
+
+    <div class="item">
+      <div class="item-header">
+        <span>UniDine-Cafeteria Managment System</span>
+        <span>2026</span> 
+      </div>
+      <div class="tech-stack">Tech Stack: HTML, CSS, C++</div>
+      <ul>
+        <li>Built a functional cafeteria management system as a Computer Programming project.</li>
+        <li>Implemented core logic and operations using C++ while designing a structured layout with HTML and CSS.</li>
+      </ul>
+      <div class="project-links">
+        Links: <a href="https://github.com/yourusername/grade-tracker">GitHub Repo</a> | <a href="#">Live Demo</a>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-header">
+        <span>Raah — AI Career Pathway Navigator for Pakistani Students</span>
+        <span>2026</span>
+      </div>
+      <div class="tech-stack">Tech Stack: Streamlit, Groq API, Python, FAISS, RAG</div>
+      <ul>
+        <li>Developed an AI-powered career guide utilizing Retrieval-Augmented Generation (RAG).</li>
+        <li>Split official documents into labeled sections and converted them into embeddings to search efficiently using FAISS.</li>
+        <li>Integrated an LLM on Groq to write accurate answers based strictly on the retrieved evidence.</li>
+      </ul>
+      <div class="project-links">
+        Links: <a href="https://github.com/yourusername/weather-app">GitHub Repo</a> | <a href="#">Live Demo</a>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-header">
+        <span>SmartCare Hospital</span>
+        <span>2026</span>
+      </div>
+      <div class="tech-stack">Tech Stack: HTML, CSS</div>
+      <ul>
+   <li>Created a multi-page hospital website as an Introduction to ICT project, focusing on clean layout and responsive web design principles.</li>
+        
+      </ul>
+      <div class="project-links">
+        Links: <a href="https://github.com/yourusername/react-todo">GitHub Repo</a> | <a href="#">Live Demo</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ==========================================
+       5. CERTIFICATIONS
+       ========================================== -->
+  <section>
+    <h2>Certifications & Activities</h2>
+    <div class="item">
+      <ul>
+        <li><strong>freeCodeCamp:</strong> Responsive Web Design Certification (2026)</li>
+        <li><strong>PakAngles:</strong> Generative and Agentic AI (cohort 11)</li>
+        <li><strong>Coursera:</strong> Google AI Essentials</li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>
