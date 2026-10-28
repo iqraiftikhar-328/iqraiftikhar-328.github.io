@@ -51,7 +51,7 @@ a{color:inherit}h1,h2,h3{font-family:var(--head);line-height:1.15}
 .i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
 
 /* ===== LAYOUT ===== */
-.layout{position:relative;z-index:1;display:grid;grid-template-columns:270px 1fr;gap:28px;max-width:1220px;margin:0 auto;padding:24px}
+.layout{position:relative;z-index:2;display:grid;grid-template-columns:270px 1fr;gap:28px;max-width:1220px;margin:0 auto;padding:24px}
 .content{min-width:0}
 
 /* ===== PROFILE SIDEBAR ===== */
@@ -144,7 +144,7 @@ main:focus,section:focus,h1:focus{outline:none}
 #prog{position:fixed;top:0;left:0;width:100%;height:4px;z-index:60;background:var(--brand);box-shadow:0 0 10px var(--glow);transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
 
 /* Spotlight Cursor */
-#spot{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(520px circle at var(--mx,50%) var(--my,30%),var(--glow),transparent 65%)}
+#spot{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(600px circle at var(--mx,50%) var(--my,30%),var(--glow),transparent 60%)}
 #spot.on{opacity:1}
 
 /* Typing Effect */
@@ -493,7 +493,7 @@ $("#mform").onsubmit=e=>{e.preventDefault();const f=e.target;location.href="mail
 // ===== AI ASSISTANT =====
 // EDIT: Change NAME to your name. This is what the AI uses to identify itself.
 const NAME="Iqra";
-const MODEL="llama-3.3-70b-versatile";
+const MODEL="openai/gpt-oss-120b";
 // EDIT: Add facts here that aren't explicitly on the page (e.g., hobbies, languages you speak).
 const EXTRA=[
   "Iqra is a 2nd-semester Computer Science student at Bahria University, Islamabad.",
@@ -582,10 +582,19 @@ pb.onclick=()=>setPause(!paused);setPause(RM.matches);
 RM.addEventListener("change",e=>{if(e.matches)setPause(true)});
 
 // ===== MOUSE SPOTLIGHT EFFECT =====
-const spot=$("#spot");
-if(matchMedia("(hover:hover) and (pointer:fine)").matches&&!RM.matches){let f=false,mx=0,my=0;
-  addEventListener("pointermove",e=>{mx=e.clientX;my=e.clientY;if(!f){f=true;requestAnimationFrame(()=>{spot.style.setProperty("--mx",mx+"px");spot.style.setProperty("--my",my+"px");spot.classList.add("on");f=false})}});
-  document.documentElement.addEventListener("mouseleave",()=>spot.classList.remove("on"))}
+// ===== MOUSE SPOTLIGHT EFFECT =====
+const spot = document.getElementById("spot");
+if (spot) {
+    document.addEventListener("pointermove", (e) => {
+        spot.style.setProperty("--mx", e.clientX + "px");
+        spot.style.setProperty("--my", e.clientY + "px");
+        spot.classList.add("on");
+    });
+    
+    document.addEventListener("pointerleave", () => {
+        spot.classList.remove("on");
+    });
+}
 </script>
 </body>
 </html>
