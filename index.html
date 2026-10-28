@@ -51,7 +51,7 @@ a{color:inherit}h1,h2,h3{font-family:var(--head);line-height:1.15}
 .i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
 
 /* ===== LAYOUT ===== */
-.layout{position:relative;z-index:2;display:grid;grid-template-columns:270px 1fr;gap:28px;max-width:1220px;margin:0 auto;padding:24px}
+.layout{position:relative;z-index:2;display:grid;grid-template-columns:270px 1fr;gap:28px;max-width:1220px;margin:0 auto;padding:24px; background: transparent;}
 .content{min-width:0}
 
 /* ===== PROFILE SIDEBAR ===== */
@@ -148,7 +148,7 @@ main:focus,section:focus,h1:focus{outline:none}
 #spot.on{opacity:1}
 
 /* Typing Effect */
-.role{display:block;color:var(--ac);min-height:1.15em}
+.role{display:block;color:var(--ac);min-height:1.15em; user-select: none;}
 .caret{display:inline-block;width:.08em;height:.85em;margin-left:4px;vertical-align:-.08em;background:var(--ac);animation:bl 1s steps(1) infinite}
 @keyframes bl{50%{opacity:0}}
 
@@ -443,11 +443,15 @@ main:focus,section:focus,h1:focus{outline:none}
     <a href="cv.pdf" download><svg class="i"><use href="#dl"/></svg><span><b>Download CV</b><small>PDF</small></span></a>
   </div>
   
-  <form class="msg" id="mform">
-    <input name="n" placeholder="Your name" required autocomplete="name" aria-label="Your name">
-    <textarea name="m" rows="4" placeholder="Your message" required aria-label="Your message"></textarea>
+  <form class="msg" action="https://formsubmit.co/iqraiftikhar328@gmail.com" method="POST">
+    <!-- Add hidden fields so FormSubmit works perfectly -->
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_subject" value="New message from your Portfolio!">
+    
+    <input type="text" name="name" placeholder="Your name" required>
+    <textarea name="message" rows="4" placeholder="Your message" required></textarea>
     <button class="btn" type="submit"><svg class="i"><use href="#send"/></svg>Send by email</button>
-  </form>
+</form>
 </section>
 <footer>© <span id="yr"></span>Iqra. Built with HTML, CSS and JavaScript.</footer>
 </main>
@@ -493,7 +497,7 @@ $("#mform").onsubmit=e=>{e.preventDefault();const f=e.target;location.href="mail
 // ===== AI ASSISTANT =====
 // EDIT: Change NAME to your name. This is what the AI uses to identify itself.
 const NAME="Iqra";
-const MODEL="llama-3.1-8b-instant";
+const MODEL="openai/gpt-oss-120b";
 // EDIT: Add facts here that aren't explicitly on the page (e.g., hobbies, languages you speak).
 const EXTRA=[
   "Iqra is a 2nd-semester Computer Science student at Bahria University, Islamabad.",
@@ -572,14 +576,36 @@ addEventListener("keydown",e=>{if(e.key!=="Escape")return;
   else if(chat.classList.contains("open")){$("#shut").click();fab.focus()}});
 
 // ===== TYPING TEXT EFFECT =====
-const roles=["Full Stack Developer","AI Engineer","Problem Solver"],roleEl=$("#role"),pb=$("#pause");
-let ri=0,ci=roles[0].length,del=true,paused=false,timer;
-function step(){if(paused)return;const w=roles[ri];
-  if(del){ci--;roleEl.textContent=w.slice(0,ci);if(ci===0){del=false;ri=(ri+1)%roles.length;timer=setTimeout(step,300);return}timer=setTimeout(step,40)}
-  else{const n=roles[ri];ci++;roleEl.textContent=n.slice(0,ci);if(ci===n.length){del=true;timer=setTimeout(step,1800);return}timer=setTimeout(step,70)}}
-function setPause(p){paused=p;clearTimeout(timer);pb.setAttribute("aria-pressed",p);pb.textContent=p?"Play text animation":"Pause text animation";ci=roles[ri].length;del=true;roleEl.textContent=roles[ri];if(!p)timer=setTimeout(step,1800)}
-pb.onclick=()=>setPause(!paused);setPause(RM.matches);
-RM.addEventListener("change",e=>{if(e.matches)setPause(true)});
+// ===== TYPING TEXT EFFECT =====
+const roles = ["Full Stack Developer", "AI Engineer", "Problem Solver"];
+const roleEl = document.getElementById("role");
+let ri = 0, ci = 0, del = false, timer;
+
+function step() {
+    const w = roles[ri];
+    if (del) {
+        ci--;
+        roleEl.textContent = w.slice(0, ci);
+        if (ci === 0) {
+            del = false;
+            ri = (ri + 1) % roles.length;
+            timer = setTimeout(step, 300);
+            return;
+        }
+        timer = setTimeout(step, 40);
+    } else {
+        const n = roles[ri];
+        ci++;
+        roleEl.textContent = n.slice(0, ci);
+        if (ci === n.length) {
+            del = true;
+            timer = setTimeout(step, 1800);
+            return;
+        }
+        timer = setTimeout(step, 70);
+    }
+}
+step(); // Start the typing effect
 
 // ===== MOUSE SPOTLIGHT EFFECT =====
 // ===== MOUSE SPOTLIGHT EFFECT =====
