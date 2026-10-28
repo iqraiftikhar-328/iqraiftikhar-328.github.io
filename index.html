@@ -21,7 +21,7 @@
   --muted: #a1a1aa;     /* Secondary text color */
   --ac: #00ff88;        /* Neon Green Accent */
   --on: #04110a;        /* Text color ON the accent buttons */
-  --glow: rgba(0, 255, 136, 0.2); /* Glow effect */
+  --glow: rgba(0, 255, 136, 0.35); /* Glow effect */
 }
 
 :root[data-theme="light"] {
@@ -144,8 +144,19 @@ main:focus,section:focus,h1:focus{outline:none}
 #prog{position:fixed;top:0;left:0;width:100%;height:4px;z-index:60;background:var(--brand);box-shadow:0 0 10px var(--glow);transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
 
 /* Spotlight Cursor */
-#spot{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(600px circle at var(--mx,50%) var(--my,30%),var(--glow),transparent 60%); mix-blend-mode: screen;}
-#spot.on{opacity:1}
+/* Spotlight Cursor */
+#spot {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    background: radial-gradient(800px circle at var(--mx, 50%) var(--my, 30%), var(--glow), transparent 40%);
+}
+#spot.on {
+    opacity: 1;
+}
 
 /* Typing Effect */
 .role{display:block;color:var(--ac);min-height:1.15em; user-select: none;}
@@ -531,15 +542,22 @@ step(); // Start the typing effect
 
 // ===== MOUSE SPOTLIGHT EFFECT =====
 // ===== MOUSE SPOTLIGHT EFFECT =====
+// ===== MOUSE SPOTLIGHT EFFECT =====
 const spot = document.getElementById("spot");
+
+// Make sure the element exists before running
 if (spot) {
-    document.addEventListener("pointermove", (e) => {
+    document.addEventListener("mousemove", (e) => {
+        // Update CSS variables with mouse position
         spot.style.setProperty("--mx", e.clientX + "px");
         spot.style.setProperty("--my", e.clientY + "px");
+        
+        // Add the 'on' class to make it visible
         spot.classList.add("on");
     });
-    
-    document.addEventListener("pointerleave", () => {
+
+    // Turn off glow when mouse leaves the window
+    document.addEventListener("mouseleave", () => {
         spot.classList.remove("on");
     });
 }
