@@ -554,10 +554,41 @@ $$("[data-copy]").forEach(a=>{const v=a.dataset.copy;a.setAttribute("aria-label"
   try{await navigator.clipboard.writeText(v);note("Copied! "+v)}
   catch(x){const t=document.createElement("textarea");t.value=v;document.body.append(t);t.select();let ok=false;try{ok=document.execCommand("copy")}catch(y){}t.remove();note(ok?"Copied! "+v:"Couldn’t copy. My email is "+v)}})});
 
-const prog=$("#prog"),topb=$("#top");let tick=false;
-function onScroll(){tick=false;const h=document.documentElement.scrollHeight-innerHeight;prog.style.transform="scaleX("+(h>0?Math.min(scrollY/h,1):0)+")";topb.classList.toggle("show",scrollY>500)}
-addEventListener("scroll",()=>{if(!tick){tick=true;requestAnimationFrame(onScroll)}},{passive:true});onScroll();
-topb.onclick=()=>{scrollTo({top:0,behavior:RM.matches?"auto":"smooth"});$("#h1").focus({preventScroll:true})};
+// Scroll Progress Bar & Back to Top Button
+const prog = document.getElementById("prog");
+const topb = document.getElementById("top");
+let tick = false;
+
+function onScroll() {
+    tick = false;
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    
+    // Update progress bar
+    if (prog) {
+        prog.style.transform = "scaleX(" + (h > 0 ? Math.min(window.scrollY / h, 1) : 0) + ")";
+    }
+    
+    // Show/hide Back to Top button after 400px
+    if (topb) {
+        topb.classList.toggle("show", window.scrollY > 400);
+    }
+}
+
+window.addEventListener("scroll", () => {
+    if (!tick) {
+        tick = true;
+        requestAnimationFrame(onScroll);
+    }
+}, { passive: true });
+
+onScroll(); // Run once on load
+
+if (topb) {
+    topb.onclick = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        document.getElementById("h1").focus({ preventScroll: true });
+    };
+}
 
 const burger=$("#burger"),nav=$("#nav");
 function menu(o){nav.classList.toggle("open",o);burger.setAttribute("aria-expanded",o);burger.setAttribute("aria-label",o?"Close menu":"Open menu");$("use",burger).setAttribute("href",o?"#close":"#menu");document.body.style.overflow=o?"hidden":"";if(o)setTimeout(()=>$("#nav a").focus(),50)}
