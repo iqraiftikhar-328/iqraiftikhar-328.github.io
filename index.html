@@ -204,8 +204,39 @@ main:focus,section:focus,h1:focus{outline:none}
 #toast.show{opacity:1;transform:translate(-50%,0)}
 
 /* Back to Top Button */
-#top{position:fixed;left:20px;bottom:20px;z-index:20;display:none;place-items:center;width:48px;height:48px;border-radius:50%;border:2px solid var(--ac);background:var(--card);color:var(--ac);cursor:pointer}
-#top.show{display:grid}
+/* Back to Top Button */
+#top {
+    position: fixed;
+    right: 20px;
+    bottom: 90px; /* Placed above the AI/FAB button spot */
+    z-index: 99;
+    display: grid;
+    place-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--ac);
+    background: var(--card);
+    color: var(--ac);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px var(--glow);
+}
+
+#top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#top:hover {
+    background: var(--ac);
+    color: var(--on);
+    transform: translateY(-5px);
+}
 
 /* Responsive */
 @media(max-width:900px){
